@@ -1,0 +1,134 @@
+===========================
+     File description
+===========================
+
+
+
+
+
+
+
+
+
+------------------------------------------------------
+    Main headers
+------------------------------------------------------
+ins.h	
+	Headers of all program.
+		
+parameters.h
+	Constants	
+
+
+
+------------------------------------------------------
+    Main program
+------------------------------------------------------
+ins-main.c
+	Main program,
+	run time step: update velocity, update temprature, 
+		update surface height.
+
+
+------------------------------------------------------
+    INS solver, utils
+------------------------------------------------------
+ins-solver.c
+	INS solver routines.
+	* init solver
+	* destroy solver
+read-nc.c
+	Read netcdf data
+save-load.c
+	Save & load functions
+
+ins-utils.c
+	INS utils
+	* options
+	* dof-norm
+ice-grid.c
+	Map initial mesh to terrain, using height function.
+	* solver Gu
+
+
+
+------------------------------------------------------
+   Problem definition
+------------------------------------------------------
+ins-bc.c
+	time wrapper for boundary condition
+
+Boundary files:
+  1. define func_[u|p|f|T|g|beta]
+  2. my_bc_map
+  3. get_effective_viscosity
+  including:
+
+  ins-testcase.c
+  ISMIP-HOM.c
+  ESIMINT-TEST.c
+  HEINO-TEST.c
+  GREENLAND.c
+
+
+
+
+------------------------------------------------------
+   Solver for INS system
+------------------------------------------------------
+ins-system.c
+	Linear system for (u, p)
+
+mat_op3.h
+	3x3 mat utils
+
+slip-bdry.c
+	Slip boundary routines.
+	* build rotation matrix for each DOF on slip boundary.
+
+ins-pcd.c
+	PCD solver for INS system
+	* build pc
+	* pc proc
+
+
+
+
+
+------------------------------------------------------
+   Solver for temp
+------------------------------------------------------
+temp-solver.c
+	Linear solver for temperature
+
+
+
+
+
+
+------------------------------------------------------
+        Ice sheet mesh utils & solver
+------------------------------------------------------
+layers.h
+layers.c
+	Utils for layered mesh
+	* build layered mesh
+
+moving-mesh.c
+	* height depth
+	* moving 
+	* move dof
+	* choose update height scheme
+
+vtk-draw.h
+fv_vert.c
+	* FV solver based on vert 
+
+
+
+
+
+
+
+
+
